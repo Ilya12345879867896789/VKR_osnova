@@ -1,0 +1,44 @@
+﻿<Window x:Class="Sklad_mebeli.WindowProdykcii"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sklad_mebeli"
+        mc:Ignorable="d"
+        Title="Окно готовой продукции" Height="450" Width="800">
+    <Grid Background="#FFF2DFD3">
+        <ListBox TextBlock.TextAlignment="Center" x:Name="listBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" Margin="159,159,193,70" FontFamily="Cambria" FontSize="16">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Ves}"></TextBlock>
+                        <TextBlock Text="{Binding Dlinna}"></TextBlock>
+                        <TextBlock Text="{Binding Shirina}"></TextBlock>
+                        <TextBlock Text="{Binding Obshivka}"></TextBlock>
+                        <TextBlock Text="{Binding Nazvanie}"></TextBlock>
+                        <TextBlock Text="{Binding Glubina}"></TextBlock>
+                        <TextBlock Text="{Binding Visota}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="poisk" Margin="449,10,195,375" TextChanged="poisk_TextChanged" FontFamily="Cambria" FontSize="16"/>
+        <ComboBox x:Name="Sortirovka" Margin="449,56,195,327" FontFamily="Cambtia" FontSize="16" SelectionChanged="Sortirovka_SelectionChanged">
+            <ComboBoxItem Content="по названию (А-Я)"/>
+            <ComboBoxItem Content="по названию (Я-А)"/>
+            <ComboBoxItem Content="по ширине (возрастание)"/>
+            <ComboBoxItem Content="по ширине (убывание)"/>
+        </ComboBox>
+        <Button x:Name="Назад" Content="Назад" Margin="159,367,518,11" FontFamily="Cambria" FontSize="16" Background="#FFAB5C16" Click="Назад_Click"/>
+        <Button Content="Сгенерировать штрих-код" Margin="159,23,426,358" RenderTransformOrigin="0.5,0.5" Background="#FFAB5C16" FontFamily="Cambria" FontSize="16" Click="Button_Click_1"></Button>
+        <Button x:Name="Dobav" Content="Добавить продукцию" Margin="420,114,195,265" Click="Button_Click" Background="#FFAB5C16" FontFamily="Cambria" FontSize="16"></Button>
+        <Button x:Name="Del" Content="Удалить" Margin="478,368,195,10" Click="Del_Click"></Button>
+        <Button x:Name="Redactirovanie" Content="Редактирование" Margin="159,114,518,265" Click="Redactirovanie_Click"></Button>
+
+    </Grid>
+</Window>

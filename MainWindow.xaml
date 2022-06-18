@@ -1,0 +1,19 @@
+﻿<Window x:Class="Sklad_mebeli.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sklad_mebeli"
+        mc:Ignorable="d"
+        Title="Окно авторизации" Height="450" Width="800" FontFamily="Cambria" FontSize="16">
+    <Grid Background="#FFF2DFD3">
+        <Label Content="Логин" Margin="351,121,261,248" FontFamily="Cambria" FontSize="16"></Label>
+        <Label Content="Пароль" Margin="351,204,261,175" FontFamily="Cambria" FontSize="16"></Label>
+        <TextBox x:Name="login" Margin="351,171,315,215" Background="#FFF2DFD3" FontFamily="Cambria" FontSize="14"></TextBox>
+        <PasswordBox x:Name="password" Margin="351,237,315,149" Background="#FFF2DFD3" FontFamily="Cambria" FontSize="14"></PasswordBox>
+        <Button x:Name="Vhod" Content="Войти" Margin="351,300,315,85" Click="Vhod_Click" Background="#FFAB5C16" FontFamily="Cambria" FontSize="16"></Button>
+        <Label Content="Авторизация" Margin="351,68,281,298" FontFamily="Cambria" FontSize="16"></Label>
+        <Image Margin="10,0,727,343" Source="Иконка для программы.PNG" Stretch="Fill"/>
+
+    </Grid>
+</Window>

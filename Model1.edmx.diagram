@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="932edc48d012493b8f54bf1cfeb67c0a" Name="Diagram1">
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Avtorizacia" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Gotovaya_prodykcia" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Materiali" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Postavchik1" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Postavka" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Sclad" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Sotrydniki" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Tovarnaya_nakladnaya" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Transportnaya_nakladnaya" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sklad_MebeliModel.Zakaz" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Avtorizacia_Sotrydniki" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Sclad_Gotovaya_prodykcia" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Postavka_Materiali" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Sclad_Materiali" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Postavka_Postavchik1" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Sclad_Postavchik1" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Transportnaya_nakladnaya_Postavka" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Sclad_Sotrydniki" ManuallyRouted="false" />
+        <AssociationConnector Association="Sklad_MebeliModel.FK_Zakaz_Tovarnaya_nakladnaya" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

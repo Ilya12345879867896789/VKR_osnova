@@ -1,0 +1,785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Sklad_MebeliModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Avtorizacia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parol" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_sotrydnika" Type="int" />
+        </EntityType>
+        <EntityType Name="Gotovaya_prodykcia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ves" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dlinna" Type="nvarchar" MaxLength="50" />
+          <Property Name="Shirina" Type="nvarchar" MaxLength="50" />
+          <Property Name="Obshivka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Glubina" Type="nvarchar" MaxLength="50" />
+          <Property Name="Visota" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Materiali">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Massiv_drevisini" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pliti_drevestno_sryjechnie" Type="nvarchar" MaxLength="50" />
+          <Property Name="MDF" Type="nvarchar" MaxLength="50" />
+          <Property Name="DVP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Oblicovanniy_shpon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Metall" Type="nvarchar" MaxLength="50" />
+          <Property Name="Raspolozenie" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Postavchik1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Raspolozenie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Familia_fiz_kica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ima_fiz_lica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Otchestvo_fiz_lica" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Postavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_postavchika" Type="int" />
+          <Property Name="ID_materiala" Type="int" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sclad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_sotrydnika" Type="int" />
+          <Property Name="ID_postavchika" Type="int" />
+          <Property Name="ID_materiala" Type="int" />
+          <Property Name="ID_gotovoy_prodykcii" Type="int" />
+          <Property Name="Raspolozenie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sotrydniki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ima" Type="nvarchar" MaxLength="50" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Seria_pasporta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nomer_pasporta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Data_rojdenia" Type="nvarchar" MaxLength="50" />
+          <Property Name="Doljnost" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parol" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tovarnaya_nakladnaya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_gotovoy_prodykcii" Type="int" />
+          <Property Name="Proizvoditel" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_zakaza" Type="int" />
+        </EntityType>
+        <EntityType Name="Transportnaya_nakladnaya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Raspolozenie" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_postavki" Type="int" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_tovarnoy_nakladnoy" Type="int" />
+        </EntityType>
+        <Association Name="FK_Avtorizacia_Sotrydniki">
+          <End Role="Sotrydniki" Type="Self.Sotrydniki" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtorizacia" Type="Self.Avtorizacia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtorizacia">
+              <PropertyRef Name="ID_sotrydnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Materiali">
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materiali">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_materiala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Postavchik1">
+          <End Role="Postavchik1" Type="Self.Postavchik1" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavchik1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_postavchika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Gotovaya_prodykcia">
+          <End Role="Gotovaya_prodykcia" Type="Self.Gotovaya_prodykcia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gotovaya_prodykcia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_gotovoy_prodykcii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Materiali">
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materiali">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_materiala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Postavchik1">
+          <End Role="Postavchik1" Type="Self.Postavchik1" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavchik1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_postavchika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Sotrydniki">
+          <End Role="Sotrydniki" Type="Self.Sotrydniki" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_sotrydnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia">
+          <End Role="Gotovaya_prodykcia" Type="Self.Gotovaya_prodykcia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovarnaya_nakladnaya" Type="Self.Tovarnaya_nakladnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gotovaya_prodykcia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovarnaya_nakladnaya">
+              <PropertyRef Name="ID_gotovoy_prodykcii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transportnaya_nakladnaya_Postavka">
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportnaya_nakladnaya" Type="Self.Transportnaya_nakladnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportnaya_nakladnaya">
+              <PropertyRef Name="ID_postavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Tovarnaya_nakladnaya">
+          <End Role="Tovarnaya_nakladnaya" Type="Self.Tovarnaya_nakladnaya" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovarnaya_nakladnaya">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="ID_tovarnoy_nakladnoy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Sklad_MebeliModelContainer">
+          <EntitySet Name="Avtorizacia" EntityType="Self.Avtorizacia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gotovaya_prodykcia" EntityType="Self.Gotovaya_prodykcia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materiali" EntityType="Self.Materiali" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavchik1" EntityType="Self.Postavchik1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavka" EntityType="Self.Postavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sclad" EntityType="Self.Sclad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrydniki" EntityType="Self.Sotrydniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovarnaya_nakladnaya" EntityType="Self.Tovarnaya_nakladnaya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportnaya_nakladnaya" EntityType="Self.Transportnaya_nakladnaya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Avtorizacia_Sotrydniki" Association="Self.FK_Avtorizacia_Sotrydniki">
+            <End Role="Sotrydniki" EntitySet="Sotrydniki" />
+            <End Role="Avtorizacia" EntitySet="Avtorizacia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Materiali" Association="Self.FK_Postavka_Materiali">
+            <End Role="Materiali" EntitySet="Materiali" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Postavchik1" Association="Self.FK_Postavka_Postavchik1">
+            <End Role="Postavchik1" EntitySet="Postavchik1" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Gotovaya_prodykcia" Association="Self.FK_Sclad_Gotovaya_prodykcia">
+            <End Role="Gotovaya_prodykcia" EntitySet="Gotovaya_prodykcia" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Materiali" Association="Self.FK_Sclad_Materiali">
+            <End Role="Materiali" EntitySet="Materiali" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Postavchik1" Association="Self.FK_Sclad_Postavchik1">
+            <End Role="Postavchik1" EntitySet="Postavchik1" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Sotrydniki" Association="Self.FK_Sclad_Sotrydniki">
+            <End Role="Sotrydniki" EntitySet="Sotrydniki" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia" Association="Self.FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia">
+            <End Role="Gotovaya_prodykcia" EntitySet="Gotovaya_prodykcia" />
+            <End Role="Tovarnaya_nakladnaya" EntitySet="Tovarnaya_nakladnaya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transportnaya_nakladnaya_Postavka" Association="Self.FK_Transportnaya_nakladnaya_Postavka">
+            <End Role="Postavka" EntitySet="Postavka" />
+            <End Role="Transportnaya_nakladnaya" EntitySet="Transportnaya_nakladnaya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Tovarnaya_nakladnaya" Association="Self.FK_Zakaz_Tovarnaya_nakladnaya">
+            <End Role="Tovarnaya_nakladnaya" EntitySet="Tovarnaya_nakladnaya" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sklad_MebeliModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Avtorizacia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_sotrydnika" Type="Int32" />
+          <NavigationProperty Name="Sotrydniki" Relationship="Self.FK_Avtorizacia_Sotrydniki" FromRole="Avtorizacia" ToRole="Sotrydniki" />
+        </EntityType>
+        <EntityType Name="Gotovaya_prodykcia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ves" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dlinna" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Shirina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Obshivka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Glubina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Visota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sclad" Relationship="Self.FK_Sclad_Gotovaya_prodykcia" FromRole="Gotovaya_prodykcia" ToRole="Sclad" />
+          <NavigationProperty Name="Tovarnaya_nakladnaya" Relationship="Self.FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia" FromRole="Gotovaya_prodykcia" ToRole="Tovarnaya_nakladnaya" />
+        </EntityType>
+        <EntityType Name="Materiali">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Massiv_drevisini" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pliti_drevestno_sryjechnie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MDF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DVP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Oblicovanniy_shpon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Metall" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Postavka" Relationship="Self.FK_Postavka_Materiali" FromRole="Materiali" ToRole="Postavka" />
+          <NavigationProperty Name="Sclad" Relationship="Self.FK_Sclad_Materiali" FromRole="Materiali" ToRole="Sclad" />
+          <Property Name="Raspolozenie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Postavchik1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Raspolozenie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Familia_fiz_kica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ima_fiz_lica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo_fiz_lica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Postavka" Relationship="Self.FK_Postavka_Postavchik1" FromRole="Postavchik1" ToRole="Postavka" />
+          <NavigationProperty Name="Sclad" Relationship="Self.FK_Sclad_Postavchik1" FromRole="Postavchik1" ToRole="Sclad" />
+        </EntityType>
+        <EntityType Name="Postavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_postavchika" Type="Int32" />
+          <Property Name="ID_materiala" Type="Int32" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materiali" Relationship="Self.FK_Postavka_Materiali" FromRole="Postavka" ToRole="Materiali" />
+          <NavigationProperty Name="Postavchik1" Relationship="Self.FK_Postavka_Postavchik1" FromRole="Postavka" ToRole="Postavchik1" />
+          <NavigationProperty Name="Transportnaya_nakladnaya" Relationship="Self.FK_Transportnaya_nakladnaya_Postavka" FromRole="Postavka" ToRole="Transportnaya_nakladnaya" />
+        </EntityType>
+        <EntityType Name="Sclad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_sotrydnika" Type="Int32" />
+          <Property Name="ID_postavchika" Type="Int32" />
+          <Property Name="ID_materiala" Type="Int32" />
+          <Property Name="ID_gotovoy_prodykcii" Type="Int32" />
+          <Property Name="Raspolozenie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gotovaya_prodykcia" Relationship="Self.FK_Sclad_Gotovaya_prodykcia" FromRole="Sclad" ToRole="Gotovaya_prodykcia" />
+          <NavigationProperty Name="Materiali" Relationship="Self.FK_Sclad_Materiali" FromRole="Sclad" ToRole="Materiali" />
+          <NavigationProperty Name="Postavchik1" Relationship="Self.FK_Sclad_Postavchik1" FromRole="Sclad" ToRole="Postavchik1" />
+          <NavigationProperty Name="Sotrydniki" Relationship="Self.FK_Sclad_Sotrydniki" FromRole="Sclad" ToRole="Sotrydniki" />
+        </EntityType>
+        <EntityType Name="Sotrydniki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ima" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Seria_pasporta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nomer_pasporta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Data_rojdenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Doljnost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Avtorizacia" Relationship="Self.FK_Avtorizacia_Sotrydniki" FromRole="Sotrydniki" ToRole="Avtorizacia" />
+          <NavigationProperty Name="Sclad" Relationship="Self.FK_Sclad_Sotrydniki" FromRole="Sotrydniki" ToRole="Sclad" />
+        </EntityType>
+        <EntityType Name="Tovarnaya_nakladnaya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_gotovoy_prodykcii" Type="Int32" />
+          <Property Name="Proizvoditel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_zakaza" Type="Int32" />
+          <NavigationProperty Name="Gotovaya_prodykcia" Relationship="Self.FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia" FromRole="Tovarnaya_nakladnaya" ToRole="Gotovaya_prodykcia" />
+          <NavigationProperty Name="Zakaz" Relationship="Self.FK_Zakaz_Tovarnaya_nakladnaya" FromRole="Tovarnaya_nakladnaya" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Transportnaya_nakladnaya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Raspolozenie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_postavki" Type="Int32" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Postavka" Relationship="Self.FK_Transportnaya_nakladnaya_Postavka" FromRole="Transportnaya_nakladnaya" ToRole="Postavka" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_tovarnoy_nakladnoy" Type="Int32" />
+          <NavigationProperty Name="Tovarnaya_nakladnaya" Relationship="Self.FK_Zakaz_Tovarnaya_nakladnaya" FromRole="Zakaz" ToRole="Tovarnaya_nakladnaya" />
+        </EntityType>
+        <Association Name="FK_Avtorizacia_Sotrydniki">
+          <End Role="Sotrydniki" Type="Self.Sotrydniki" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Avtorizacia" Type="Self.Avtorizacia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Avtorizacia">
+              <PropertyRef Name="ID_sotrydnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Gotovaya_prodykcia">
+          <End Role="Gotovaya_prodykcia" Type="Self.Gotovaya_prodykcia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gotovaya_prodykcia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_gotovoy_prodykcii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia">
+          <End Role="Gotovaya_prodykcia" Type="Self.Gotovaya_prodykcia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tovarnaya_nakladnaya" Type="Self.Tovarnaya_nakladnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gotovaya_prodykcia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tovarnaya_nakladnaya">
+              <PropertyRef Name="ID_gotovoy_prodykcii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Materiali">
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materiali">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_materiala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Materiali">
+          <End Role="Materiali" Type="Self.Materiali" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materiali">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_materiala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Postavchik1">
+          <End Role="Postavchik1" Type="Self.Postavchik1" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavchik1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_postavchika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Postavchik1">
+          <End Role="Postavchik1" Type="Self.Postavchik1" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavchik1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_postavchika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transportnaya_nakladnaya_Postavka">
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportnaya_nakladnaya" Type="Self.Transportnaya_nakladnaya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transportnaya_nakladnaya">
+              <PropertyRef Name="ID_postavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sclad_Sotrydniki">
+          <End Role="Sotrydniki" Type="Self.Sotrydniki" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Sclad" Type="Self.Sclad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sclad">
+              <PropertyRef Name="ID_sotrydnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Tovarnaya_nakladnaya">
+          <End Role="Tovarnaya_nakladnaya" Type="Self.Tovarnaya_nakladnaya" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovarnaya_nakladnaya">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="ID_tovarnoy_nakladnoy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Avtorizacia" EntityType="Self.Avtorizacia" />
+          <EntitySet Name="Gotovaya_prodykcia" EntityType="Self.Gotovaya_prodykcia" />
+          <EntitySet Name="Materiali" EntityType="Self.Materiali" />
+          <EntitySet Name="Postavchik1" EntityType="Self.Postavchik1" />
+          <EntitySet Name="Postavka" EntityType="Self.Postavka" />
+          <EntitySet Name="Sclad" EntityType="Self.Sclad" />
+          <EntitySet Name="Sotrydniki" EntityType="Self.Sotrydniki" />
+          <EntitySet Name="Tovarnaya_nakladnaya" EntityType="Self.Tovarnaya_nakladnaya" />
+          <EntitySet Name="Transportnaya_nakladnaya" EntityType="Self.Transportnaya_nakladnaya" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" />
+          <AssociationSet Name="FK_Avtorizacia_Sotrydniki" Association="Self.FK_Avtorizacia_Sotrydniki">
+            <End Role="Sotrydniki" EntitySet="Sotrydniki" />
+            <End Role="Avtorizacia" EntitySet="Avtorizacia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Gotovaya_prodykcia" Association="Self.FK_Sclad_Gotovaya_prodykcia">
+            <End Role="Gotovaya_prodykcia" EntitySet="Gotovaya_prodykcia" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia" Association="Self.FK_Tovarnaya_nakladnaya_Gotovaya_prodykcia">
+            <End Role="Gotovaya_prodykcia" EntitySet="Gotovaya_prodykcia" />
+            <End Role="Tovarnaya_nakladnaya" EntitySet="Tovarnaya_nakladnaya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Materiali" Association="Self.FK_Postavka_Materiali">
+            <End Role="Materiali" EntitySet="Materiali" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Materiali" Association="Self.FK_Sclad_Materiali">
+            <End Role="Materiali" EntitySet="Materiali" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Postavchik1" Association="Self.FK_Postavka_Postavchik1">
+            <End Role="Postavchik1" EntitySet="Postavchik1" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Postavchik1" Association="Self.FK_Sclad_Postavchik1">
+            <End Role="Postavchik1" EntitySet="Postavchik1" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transportnaya_nakladnaya_Postavka" Association="Self.FK_Transportnaya_nakladnaya_Postavka">
+            <End Role="Postavka" EntitySet="Postavka" />
+            <End Role="Transportnaya_nakladnaya" EntitySet="Transportnaya_nakladnaya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sclad_Sotrydniki" Association="Self.FK_Sclad_Sotrydniki">
+            <End Role="Sotrydniki" EntitySet="Sotrydniki" />
+            <End Role="Sclad" EntitySet="Sclad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Tovarnaya_nakladnaya" Association="Self.FK_Zakaz_Tovarnaya_nakladnaya">
+            <End Role="Tovarnaya_nakladnaya" EntitySet="Tovarnaya_nakladnaya" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Sklad_MebeliModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Avtorizacia">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Avtorizacia">
+              <MappingFragment StoreEntitySet="Avtorizacia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Parol" ColumnName="Parol" />
+                <ScalarProperty Name="ID_sotrydnika" ColumnName="ID_sotrydnika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gotovaya_prodykcia">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Gotovaya_prodykcia">
+              <MappingFragment StoreEntitySet="Gotovaya_prodykcia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ves" ColumnName="Ves" />
+                <ScalarProperty Name="Dlinna" ColumnName="Dlinna" />
+                <ScalarProperty Name="Shirina" ColumnName="Shirina" />
+                <ScalarProperty Name="Obshivka" ColumnName="Obshivka" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Glubina" ColumnName="Glubina" />
+                <ScalarProperty Name="Visota" ColumnName="Visota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materiali">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Materiali">
+              <MappingFragment StoreEntitySet="Materiali">
+                <ScalarProperty Name="Raspolozenie" ColumnName="Raspolozenie" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Massiv_drevisini" ColumnName="Massiv_drevisini" />
+                <ScalarProperty Name="Pliti_drevestno_sryjechnie" ColumnName="Pliti_drevestno_sryjechnie" />
+                <ScalarProperty Name="MDF" ColumnName="MDF" />
+                <ScalarProperty Name="DVP" ColumnName="DVP" />
+                <ScalarProperty Name="Oblicovanniy_shpon" ColumnName="Oblicovanniy_shpon" />
+                <ScalarProperty Name="Metall" ColumnName="Metall" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavchik1">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Postavchik1">
+              <MappingFragment StoreEntitySet="Postavchik1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Raspolozenie" ColumnName="Raspolozenie" />
+                <ScalarProperty Name="Familia_fiz_kica" ColumnName="Familia_fiz_kica" />
+                <ScalarProperty Name="Ima_fiz_lica" ColumnName="Ima_fiz_lica" />
+                <ScalarProperty Name="Otchestvo_fiz_lica" ColumnName="Otchestvo_fiz_lica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavka">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Postavka">
+              <MappingFragment StoreEntitySet="Postavka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_postavchika" ColumnName="ID_postavchika" />
+                <ScalarProperty Name="ID_materiala" ColumnName="ID_materiala" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sclad">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Sclad">
+              <MappingFragment StoreEntitySet="Sclad">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_sotrydnika" ColumnName="ID_sotrydnika" />
+                <ScalarProperty Name="ID_postavchika" ColumnName="ID_postavchika" />
+                <ScalarProperty Name="ID_materiala" ColumnName="ID_materiala" />
+                <ScalarProperty Name="ID_gotovoy_prodykcii" ColumnName="ID_gotovoy_prodykcii" />
+                <ScalarProperty Name="Raspolozenie" ColumnName="Raspolozenie" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrydniki">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Sotrydniki">
+              <MappingFragment StoreEntitySet="Sotrydniki">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Ima" ColumnName="Ima" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Seria_pasporta" ColumnName="Seria_pasporta" />
+                <ScalarProperty Name="Nomer_pasporta" ColumnName="Nomer_pasporta" />
+                <ScalarProperty Name="Data_rojdenia" ColumnName="Data_rojdenia" />
+                <ScalarProperty Name="Doljnost" ColumnName="Doljnost" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Parol" ColumnName="Parol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovarnaya_nakladnaya">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Tovarnaya_nakladnaya">
+              <MappingFragment StoreEntitySet="Tovarnaya_nakladnaya">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ID_gotovoy_prodykcii" ColumnName="ID_gotovoy_prodykcii" />
+                <ScalarProperty Name="Proizvoditel" ColumnName="Proizvoditel" />
+                <ScalarProperty Name="ID_zakaza" ColumnName="ID_zakaza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportnaya_nakladnaya">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Transportnaya_nakladnaya">
+              <MappingFragment StoreEntitySet="Transportnaya_nakladnaya">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Raspolozenie" ColumnName="Raspolozenie" />
+                <ScalarProperty Name="ID_postavki" ColumnName="ID_postavki" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakaz">
+            <EntityTypeMapping TypeName="Sklad_MebeliModel.Zakaz">
+              <MappingFragment StoreEntitySet="Zakaz">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ID_tovarnoy_nakladnoy" ColumnName="ID_tovarnoy_nakladnoy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
